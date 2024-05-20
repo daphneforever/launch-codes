@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="gy6Tqd" name="LaunchCodes" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Armory"
+              displaySplashScreen="1" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn">
+  <MAINGROUP id="PZzA9m" name="LaunchCodes">
+    <GROUP id="{125986CF-EBF4-F947-DEFB-43D28E085126}" name="Source">
+      <GROUP id="{09240D98-D1A1-20A2-D9F6-431E60337E2F}" name="ui">
+        <FILE id="HN2bIb" name="DialKnob.cpp" compile="1" resource="0" file="Source/ui/DialKnob.cpp"/>
+        <FILE id="WoET3A" name="DialKnob.h" compile="0" resource="0" file="Source/ui/DialKnob.h"/>
+        <FILE id="bGRULu" name="DialKnobOrig.cpp" compile="1" resource="0"
+              file="Source/ui/DialKnobOrig.cpp"/>
+        <FILE id="cQsnHN" name="DialKnobOrig.h" compile="0" resource="0" file="Source/ui/DialKnobOrig.h"/>
+        <FILE id="duBCmW" name="DialLookAndFeel.h" compile="0" resource="0"
+              file="Source/ui/DialLookAndFeel.h"/>
+        <FILE id="SvKN0F" name="EnvelopeNode.h" compile="0" resource="0" file="Source/ui/EnvelopeNode.h"/>
+        <FILE id="LtQ6Ij" name="EnvelopeView.cpp" compile="1" resource="0"
+              file="Source/ui/EnvelopeView.cpp"/>
+        <FILE id="pBH3Hr" name="EnvelopeView.h" compile="0" resource="0" file="Source/ui/EnvelopeView.h"/>
+        <FILE id="sdAgLF" name="FocusBorder.h" compile="0" resource="0" file="Source/ui/FocusBorder.h"/>
+        <FILE id="fMjjhK" name="KeyKnob.cpp" compile="1" resource="0" file="Source/ui/KeyKnob.cpp"/>
+        <FILE id="xZldH1" name="KeyKnob.h" compile="0" resource="0" file="Source/ui/KeyKnob.h"/>
+        <FILE id="hOUGIq" name="KeyLookAndFeel.h" compile="0" resource="0"
+              file="Source/ui/KeyLookAndFeel.h"/>
+        <FILE id="qFiI3n" name="LaunchButton.cpp" compile="1" resource="0"
+              file="Source/ui/LaunchButton.cpp"/>
+        <FILE id="ieNYj7" name="LaunchButton.h" compile="0" resource="0" file="Source/ui/LaunchButton.h"/>
+        <FILE id="NLN4KO" name="MyColors.h" compile="0" resource="0" file="Source/ui/MyColors.h"/>
+        <FILE id="YViQH8" name="TextBox.h" compile="0" resource="0" file="Source/ui/TextBox.h"/>
+        <FILE id="AzJdlh" name="TextSlider.h" compile="0" resource="0" file="Source/ui/TextSlider.h"/>
+        <FILE id="BkSAhv" name="ToggleSwitch.cpp" compile="1" resource="0"
+              file="Source/ui/ToggleSwitch.cpp"/>
+        <FILE id="StJJ77" name="ToggleSwitch.h" compile="0" resource="0" file="Source/ui/ToggleSwitch.h"/>
+        <FILE id="AzjyAx" name="WaveshaperRadar.cpp" compile="1" resource="0"
+              file="Source/ui/WaveshaperRadar.cpp"/>
+        <FILE id="j2rUMv" name="WaveshaperRadar.h" compile="0" resource="0"
+              file="Source/ui/WaveshaperRadar.h"/>
+      </GROUP>
+      <FILE id="m1WMcs" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="q3IRNx" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="GoRXDy" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="RGh0nM" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="ZXt8y1" name="ParamIDs.h" compile="0" resource="0" file="Source/ParamIDs.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="LaunchCodes"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="LaunchCodes"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
