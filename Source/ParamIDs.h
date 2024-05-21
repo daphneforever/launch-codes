@@ -31,4 +31,10 @@ inline constexpr auto damp      { "Damp" };
 inline constexpr auto width     { "Width" };
 inline constexpr auto verbMix   { "Dry/Wet" };
 
+const juce::Identifier nonParamTree { "non param tree" };
+const juce::Identifier exampleValue { "example value" };
+const juce::Identifier shaperNode1 { "shaper node 1" };
+const juce::Identifier node1X { "node 1 x" };
+const juce::Identifier node1Curve { "node 1 curve" };
+
 } // namespace ParamIDs

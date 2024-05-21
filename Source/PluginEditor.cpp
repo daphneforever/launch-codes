@@ -12,7 +12,8 @@
 //==============================================================================
 PluginEditor::PluginEditor (PluginProcessor& p, juce::UndoManager& um)
 : AudioProcessorEditor (&p), audioProcessor (p)
-, apvts(p.getPluginState())
+, apvts(p.getPluginAPVST())
+, nonParamTree(p.getPluginNonParamTree())
 , oscSwitch      (*apvts.getParameter(ParamIDs::oscIO),      &um)
 , oscGainKnob    (*apvts.getParameter(ParamIDs::oscGain),    &um)
 , oscInitalSlider(*apvts.getParameter(ParamIDs::oscInitial), &um)

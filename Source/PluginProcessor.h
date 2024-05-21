@@ -53,11 +53,17 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    juce::AudioProcessorValueTreeState& getPluginState();
+    juce::AudioProcessorValueTreeState& getPluginAPVST();
+    juce::ValueTree& getPluginNonParamTree();
 
 private:
     //==============================================================================
     juce::AudioProcessorValueTreeState apvts;
+    juce::ValueTree nonParamStateTree;
+    
+    
+    
+//    juce::ValueTree parentStateTree;
     
 //    juce::AudioParameterFloat* size { nullptr };
 //    juce::AudioParameterFloat* damp { nullptr };

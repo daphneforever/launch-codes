@@ -35,6 +35,7 @@ private:
     // access the processor object that created it.
     PluginProcessor& audioProcessor;
     juce::AudioProcessorValueTreeState& apvts;
+    juce::ValueTree& nonParamTree;
     
 //    DialLookAndFeel dialLookAndFeel;
     

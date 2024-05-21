@@ -196,12 +196,32 @@ static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout
     return layout;
 }
 
+const juce::ValueTree createNonParameterLayout()
+{
+    juce::ValueTree tree (ParamIDs::nonParamTree);
+    
+    tree.setProperty(ParamIDs::exampleValue, 11, nullptr);
+    
+    juce::ValueTree node1 (ParamIDs::shaperNode1);
+    node1.setProperty(ParamIDs::node1X, 0.5f, nullptr);
+    node1.setProperty(ParamIDs::node1Curve, 2.0f, nullptr);
+    
+    tree.addChild(node1, -1, nullptr);
+    
+    return tree;
+}
+
 PluginProcessor::PluginProcessor()
 
      : AudioProcessor (BusesProperties()
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true))
      , apvts(*this, &undoManager, "Parameters", createParameterLayout())
+     , nonParamStateTree(createNonParameterLayout())
 {
+//    parentStateTree.appendChild(apvts.state, &undoManager); // maybe don't pass the undo manager again?
+//    parentStateTree.appendChild(nonParamStateTree, &undoManager);
+    
+    
 //    auto castParameter = [&apvts = this->apvts]<typename T> (juce::StringRef paramID, T& destination)
 //    {
 //        destination = dynamic_cast<T> (apvts.getParameter (paramID));
@@ -363,21 +383,41 @@ juce::AudioProcessorEditor* PluginProcessor::createEditor()
 //==============================================================================
 void PluginProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    juce::XmlElement xmlParent ("parent");
+    
+    auto state = apvts.copyState();
+    std::unique_ptr<juce::XmlElement> xmlAPVTS (state.createXml());
+    xmlParent.addChildElement(xmlAPVTS.release());
+    
+    std::unique_ptr<juce::XmlElement> xmlNonAPVTS (nonParamStateTree.createXml());
+    xmlParent.addChildElement(xmlNonAPVTS.release());
+    
+    copyXmlToBinary(xmlParent, destData);
 }
 
 void PluginProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary(data, sizeInBytes));
+    juce::XmlElement* xmlAPVTS = xmlState->getChildByName(apvts.state.getType());
+    juce::XmlElement* xmlNonAPVTS = xmlState->getChildByName("non_APVTS_int");
+
+    if (xmlState.get() != nullptr)
+    {
+        if (xmlAPVTS->hasTagName(apvts.state.getType()))
+        {
+            apvts.replaceState(juce::ValueTree::fromXml(*xmlAPVTS));
+        }
+        if (xmlNonAPVTS->hasTagName(nonParamStateTree.getType()))
+        {
+            nonParamStateTree = juce::ValueTree::fromXml(*xmlNonAPVTS);
+        }
+    }
 }
 
-juce::AudioProcessorValueTreeState& PluginProcessor::getPluginState() { return apvts; }
+juce::AudioProcessorValueTreeState& PluginProcessor::getPluginAPVST() { return apvts; }
 
-//==============================================================================
-// This creates new instances of the plugin..
+juce::ValueTree& PluginProcessor::getPluginNonParamTree() { return nonParamStateTree; }
+
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new PluginProcessor();
